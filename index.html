@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neighborhood Transformations</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+        }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f4f4; }
+        
+        /* Navigation */
+        nav { background: var(--primary); padding: 1rem; text-align: center; position: sticky; top: 0; z-index: 100; }
+        nav a { color: white; margin: 0 20px; text-decoration: none; font-weight: bold; cursor: pointer; }
+        nav a:hover { color: var(--accent); }
+
+        .container { max-width: 1000px; margin: 50px auto; padding: 20px; display: none; }
+        .active { display: block; }
+
+        h2 { text-align: center; color: var(--primary); }
+
+        /* The Comparison Slider */
+        .comparison-slider {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+        }
+        .before-image { background-image: url('BEFORE_IMAGE_URL'); }
+        .after-image { 
+            background-image: url('AFTER_IMAGE_URL'); 
+            width: 50%; /* Initial state */
+            border-right: 3px solid white;
+        }
+
+        /* The Slider Handle */
+        input[type="range"] {
+            position: absolute;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0);
+            outline: none;
+            margin: 0;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: ew-resize;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a onclick="showPage('norwood')">NORWOOD</a>
+    <a onclick="showPage('foxlake')">FOX LAKE</a>
+</nav>
+
+<div id="norwood" class="container active">
+    <h2>Norwood: Then & Now</h2>
+    <div class="comparison-slider">
+        <div class="image before-image" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80');"></div>
+        <div id="norwood-after" class="image after-image" style="background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=80');"></div>
+        <input type="range" min="0" max="100" value="50" oninput="moveSlider(this.value, 'norwood-after')">
+    </div>
+</div>
+
+<div id="foxlake" class="container">
+    <h2>Fox Lake: Then & Now</h2>
+    <div class="comparison-slider">
+        <div class="image before-image" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80');"></div>
+        <div id="foxlake-after" class="image after-image" style="background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1000&q=80');"></div>
+        <input type="range" min="0" max="100" value="50" oninput="moveSlider(this.value, 'foxlake-after')">
+    </div>
+</div>
+
+<script>
+    function showPage(pageId) {
+        // Hide all containers
+        document.querySelectorAll('.container').forEach(div => div.classList.remove('active'));
+        // Show selected container
+        document.getElementById(pageId).classList.add('active');
+    }
+
+    function moveSlider(value, elementId) {
+        document.getElementById(elementId).style.width = value + "%";
+    }
+</script>
+
+</body>
+</html>
