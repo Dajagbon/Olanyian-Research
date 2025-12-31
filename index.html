@@ -20,6 +20,8 @@
         .active { display: block; }
 
         h2 { text-align: center; color: var(--primary); }
+    h1 { text-align: center; }
+    h1 { color: var(--primary); }
 
         /* The Comparison Slider */
         .comparison-slider {
@@ -104,6 +106,7 @@
                 width: 100%;
                 height: 600px;
                 position: relative;
+                        }
                 border-radius: 8px;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.2);
                 background: #fff;
@@ -136,84 +139,136 @@
     </style>
 </head>
 <body>
-<div style="width:100%;text-align:center;margin-bottom:10px;">
-    <a href="https://earth.google.com/web/@41.65163643,-85.01299667,313.60999896a,20373.90343824d,34.99999735y,0h,0t,0r/data=ChYqEAgBEgoxOTk4LTEyLTMxGAFCAggBMikKJwolCiExbG1pTGc0cUlCVkRrU1VJVm5PZUtQd3NBb3JwNXZzYnkgAToDCgEwQgIIAEoICIzXk-gHEAE?authuser=0" target="_blank" style="display:inline-block;padding:12px 24px;background:#3498db;color:#fff;border-radius:6px;text-decoration:none;font-weight:bold;margin-top:10px;">View in Google Earth</a>
-</div>
-
 <nav>
     <a onclick="showPage('norwood')">NORWOOD</a>
     <a onclick="showPage('foxlake')">FOX LAKE</a>
 </nav>
 
 <div id="norwood" class="container active">
-    <h2>Norwood: Then & Now</h2>
+    <h1>Norwood: Then & Now</h1>
     <div class="comparison-slider">
-           <div class="image before-image" style="background-image: url('https://indianapolisrecorder.com/wp-content/uploads/2022/04/Norwood-USGS-2021-Blue-Lines.jpg');"></div>
-           <div id="norwood-after" class="image after-image" style="background-image: url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1000&q=80');"></div>
-        <input type="range" min="0" max="100" value="50" oninput="moveSlider(this.value, 'norwood-after')">
+
+          <div class="image before-image" style="background-image: url('https://indianapolisrecorder.com/wp-content/uploads/2022/04/Norwood-USGS-2021-Blue-Lines.jpg');"></div>
+          <div id="norwood-after" class="image after-image" style="background-image: url('Norwood photos/norwoodstreets.jpg');"></div>
+          <input type="range" min="0" max="100" value="50" oninput="moveSlider(this.value, 'norwood-after')">
     </div>
-        <p>Norwood transformation: A vibrant change in community landscape.</p>
-        <div class="carousel-container" id="norwood-carousel">
+     <h1>Map of Norwood</h1>
+    <div class="carousel-container" id="norwood-carousel">
+
             <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1465101054584-6cf7b7b1c3c5?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1465101064383-6a7b7b1c3c5a?auto=format&fit=crop&w=1000&q=80');"></div>
+            <div class="carousel-slide" style="background-image: url('Norwood photos/norwoodstreets.jpg');"></div>
+            <div class="carousel-slide" style="background-image: url('Norwood photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('Norwood photos/');"></div>
+
             <button class="carousel-btn left" onclick="moveCarousel('norwood-carousel', -1)">&#8592;</button>
             <button class="carousel-btn right" onclick="moveCarousel('norwood-carousel', 1)">&#8594;</button>
         </div>
-        <p>After the Civil War, this community emerged among African American soldiers from Indiana's only Black regiment, the 28th U.S. Colored Infantry, seeking to create a neighborhood that reflected their new liberty and dreams of a future. In 1872, these veterans became the first residents of what is known as Norwood. It is the oldest Black community in the U.S. that is still inhabited by descendants of the original settlers (IFF, 2024). Norwood is thought to be named after the Norwood family, who owned a farm in the area (Indianapolis Recorder, 2022). Norwood is a neighborhood located in southeastern Indianapolis. According to McDonough's article in the Indianapolis Recorder, Norwood runs from Prospect Street on the north, Sherman Drive on the east, Terrace Avenue on the south, and a line west of Vandeman Street (2022). Norwood consisted of thick woods and orchards when it was established, providing food and potential economic opportunities (Indianapolis Recorder, 2022). Norwood was created as a self-sufficient community, and the ownership of land represented independence and progress for African Americans during Reconstruction. </p>
+        <h1>The People</h1>
+        <div class="carousel-container" id="norwood-carousel">
+
+            <div class="carousel-slide" style="background-image: url('Norwood photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('Norwood photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('Norwood photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('Norwood photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('Norwood photos/');"></div>
+            <button class="carousel-btn left" onclick="moveCarousel('norwood-carousel', -1)">&#8592;</button>
+            <button class="carousel-btn right" onclick="moveCarousel('norwood-carousel', 1)">&#8594;</button>
+        </div>
+        <h1>Places</h1>
         <div class="carousel-container" id="norwood-carousel2">
-            <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1465101054584-6cf7b7b1c3c5?auto=format&fit=crop&w=1000&q=80');"></div>
+
+            <div class="carousel-slide" style="background-image: url('Norwood photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('Norwood photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('Norwood photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('Norwood photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('Norwood photos/');"></div>
             <button class="carousel-btn left" onclick="moveCarousel('norwood-carousel2', -1)">&#8592;</button>
             <button class="carousel-btn right" onclick="moveCarousel('norwood-carousel2', 1)">&#8594;</button>
         </div>
         <p>Renovated homes enhance neighborhood appeal.</p>
-        <div class="carousel-container" id="norwood-carousel3">
-            <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1465101064383-6a7b7b1c3c5a?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1465101074383-6a7b7b1c3c5b?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1465101084383-6a7b7b1c3c5c?auto=format&fit=crop&w=1000&q=80');"></div>
-            <button class="carousel-btn left" onclick="moveCarousel('norwood-carousel3', -1)">&#8592;</button>
-            <button class="carousel-btn right" onclick="moveCarousel('norwood-carousel3', 1)">&#8594;</button>
-        </div>
-        <p>Community events foster togetherness.</p>
 </div>
 
 <div id="foxlake" class="container">
-    <h2>Fox Lake: Then & Now</h2>
-    <div class="comparison-slider">
-        <div class="image before-image" style="background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1000&q=80');"></div>
-        <div id="foxlake-after" class="image after-image" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80');"></div>
-        <input type="range" min="0" max="100" value="50" oninput="moveSlider(this.value, 'foxlake-after')">
+    <h1>Fox Lake: Then & Now</h1>
+    <h1>Then</h1>
+    <div class="carousel-container" id="foxlake-carousel">
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/images.jpg');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/Pryors020-c1946-850x500.jpg');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/Pryors018-850x500.jpg');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/Bufflo-Sodiersl01-OPT.avif');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/Bufflo-Soldier04-OPT.avif');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/Bufflo_Soldiers.avif.avif');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/308631728.avif');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/lake-people-old-640x360.avif');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/2742465801447710283.avif');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/old-boat_opt-1.avif');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/William-Watkins2.avif');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/Tuskegee.avif');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/foxlake land.png');"></div>
+        <button class="carousel-btn left" onclick="moveCarousel('foxlake-carousel', -1)">&#8592;</button>
+        <button class="carousel-btn right" onclick="moveCarousel('foxlake-carousel', 1)">&#8594;</button>
     </div>
-        <p>Fox Lake transformation: A lakeside revival.</p>
-        <div class="carousel-container" id="foxlake-carousel">
-            <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1465101154383-6a7b7b1c3c5j?auto=format&fit=crop&w=1000&q=80');"></div>
-            <button class="carousel-btn left" onclick="moveCarousel('foxlake-carousel', -1)">&#8592;</button>
-            <button class="carousel-btn right" onclick="moveCarousel('foxlake-carousel', 1)">&#8594;</button>
-        </div>
-        <p>Waterfront improvements attract visitors.</p>
-        <div class="carousel-container" id="foxlake-carousel2">
-            <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1465101054584-6cf7b7b1c3c5?auto=format&fit=crop&w=1000&q=80');"></div>
-            <button class="carousel-btn left" onclick="moveCarousel('foxlake-carousel2', -1)">&#8592;</button>
-            <button class="carousel-btn right" onclick="moveCarousel('foxlake-carousel2', 1)">&#8594;</button>
-        </div>
-        <p>New businesses boost local economy.</p>
-        <div class="carousel-container" id="foxlake-carousel3">
-            <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1465101064383-6a7b7b1c3c5a?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1465101074383-6a7b7b1c3c5b?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1465101084383-6a7b7b1c3c5c?auto=format&fit=crop&w=1000&q=80');"></div>
-            <button class="carousel-btn left" onclick="moveCarousel('foxlake-carousel3', -1)">&#8592;</button>
-            <button class="carousel-btn right" onclick="moveCarousel('foxlake-carousel3', 1)">&#8594;</button>
-        </div>
-        <p>Community spaces encourage gatherings.</p>
+    <h1>Now</h1>
+    <div class="carousel-container" id="foxlake-carousel2">
+         <div class="carousel-slide" style="background-image: url('FoxLake Photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake Photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+        <button class="carousel-btn left" onclick="moveCarousel('foxlake-carousel2', -1)">&#8592;</button>
+        <button class="carousel-btn right" onclick="moveCarousel('foxlake-carousel2', 1)">&#8594;</button>
+    </div>
+    <h1>Land Documents</h1>
+    <div class="carousel-container" id="foxlake-carousel3">
+         <div class="carousel-slide" style="background-image: url('FoxLake Photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake Photos/');"></div>
+        <button class="carousel-btn left" onclick="moveCarousel('foxlake-carousel3', -1)">&#8592;</button>
+        <button class="carousel-btn right" onclick="moveCarousel('foxlake-carousel3', 1)">&#8594;</button>
+    </div>
+     <h1>Newpapers</h1>
+    <div class="carousel-container" id="foxlake-carousel3">
+         <div class="carousel-slide" style="background-image: url('FoxLake Photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake Photos/');"></div>
+        <button class="carousel-btn left" onclick="moveCarousel('foxlake-carousel3', -1)">&#8592;</button>
+        <button class="carousel-btn right" onclick="moveCarousel('foxlake-carousel3', 1)">&#8594;</button>
+    </div>
+
+     <h1>Map of Fox Lake</h1>
+    <div class="carousel-container" id="foxlake-carousel3">
+         <div class="carousel-slide" style="background-image: url('FoxLake Photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake photos/');"></div>
+            <div class="carousel-slide" style="background-image: url('FoxLake Photos/');"></div>
+        <button class="carousel-btn left" onclick="moveCarousel('foxlake-carousel3', -1)">&#8592;</button>
+        <button class="carousel-btn right" onclick="moveCarousel('foxlake-carousel3', 1)">&#8594;</button>
+    </div>
+    
 </div>
 
 <script>
+
+        // Fullscreen logic
+        function openFullscreen(elem) {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+        }
     function showPage(pageId) {
         // Hide all containers
         document.querySelectorAll('.container').forEach(div => div.classList.remove('active'));
