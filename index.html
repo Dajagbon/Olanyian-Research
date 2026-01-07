@@ -16,7 +16,7 @@
         nav a { color: white; margin: 0 20px; text-decoration: none; font-weight: bold; cursor: pointer; }
         nav a:hover { color: var(--accent); }
 
-        .container { max-width: 1000px; margin: 50px auto; padding: 20px; display: none; }
+        .container { max-width: 1200px; margin: 50px auto; padding: 20px; display: none; }
         .active { display: block; }
 
         h2 { text-align: center; color: var(--primary); }
@@ -65,7 +65,7 @@
             .carousel-container {
                 position: relative;
                 width: 100%;
-                height: 600px;
+                height: 600px; /* or your preferred height */
                 overflow: hidden;
                 border-radius: 8px;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -75,17 +75,40 @@
             .carousel-slide {
                 width: 100%;
                 height: 100%;
-                background-size: cover;
-                background-position: center;
                 position: absolute;
                 top: 0;
                 left: 0;
                 opacity: 0;
                 transition: opacity 0.5s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             .carousel-slide.active {
                 opacity: 1;
                 z-index: 2;
+            }
+            .carousel-slide img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+                display: block;
+                margin: 0 auto;
+            }
+            .carousel-caption {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(44, 62, 80, 0.7);
+                color: #fff;
+                padding: 12px 16px;
+                font-size: 1rem;
+                text-align: center;
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+                z-index: 3;
+                pointer-events: none;
             }
             .carousel-btn {
                 position: absolute;
@@ -96,11 +119,50 @@
                 border: none;
                 padding: 10px 20px;
                 cursor: pointer;
-                z-index: 3;
+                z-index: 10;
                 border-radius: 4px;
+                pointer-events: auto;
             }
             .carousel-btn.left { left: 10px; }
             .carousel-btn.right { right: 10px; }
+            /* Fullscreen button */
+            .carousel-fullscreen-btn {
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+                background: rgba(44, 62, 80, 0.85);
+                color: #fff;
+                border: none;
+                padding: 8px 10px;
+                cursor: pointer;
+                z-index: 5;
+                border-radius: 4px;
+                line-height: 1;
+                font-size: 16px;
+            }
+            .carousel-fullscreen-btn:hover { background: rgba(52, 152, 219, 0.9); }
+            /* Zoom controls */
+            .carousel-zoom-controls {
+                position: absolute;
+                bottom: 60px; /* sit above fullscreen button */
+                right: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                z-index: 6;
+            }
+            .carousel-zoom-btn {
+                background: rgba(44, 62, 80, 0.85);
+                color: #fff;
+                border: none;
+                width: 34px;
+                height: 34px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 18px;
+                line-height: 1;
+            }
+            .carousel-zoom-btn:hover { background: rgba(52, 152, 219, 0.9); }
             /* Multi-step Comparison Styles */
             .multi-step-container {
                 width: 100%;
@@ -148,24 +210,75 @@
     <h1>Norwood: Then & Now</h1>
     <h1>Then</h1>
     <div class="carousel-container" id="norwood-carousel-then">
-        <div class="carousel-slide active" style="background-image: url('Norwood photos/Then/f8e80135-db31-4a47-a5de-e6759b0d3146-Norwood_13.webp');"></div>
-        <div class="carousel-slide" style="background-image: url('Norwood photos/Then/0e11e001-76ef-473b-a9cb-ebf42db6823a-Norwood_01.webp');"></div>
-        <div class="carousel-slide" style="background-image: url('Norwood photos/Then/15ea8f60-ab48-40dc-8cf4-ecef9945d19d-Norwood_02.webp');"></div>
-        <div class="carousel-slide" style="background-image: url('Norwood photos/Then/46c9add3-fc78-488b-8189-62ed189aeb10-Norwood_03.webp');"></div>
-        <div class="carousel-slide" style="background-image: url('Norwood photos/Then/oak-hill-768x587.png');"></div>
-        <div class="carousel-slide" style="background-image: url('Norwood photos/Then/Womens-Improvement-Club-House-768x649.png');"></div>
-        <div class="carousel-slide" style="background-image: url('Norwood photos/Then/Cooking-Class-768x436.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('Norwood photos/Then/Former_Bad_Town_Now_An_Ideal_Spot_Norwood-scaled-e1732214778156.jpg');"></div>
+        <div class="carousel-slide active">
+            <img src="Norwood photos/Then/f8e80135-db31-4a47-a5de-e6759b0d3146-Norwood_13.webp" alt="A resident of Norwood neighborhood">
+            <div class="carousel-caption">A resident of Norwood who called the Neighborhood home.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="Norwood photos/Then/0e11e001-76ef-473b-a9cb-ebf42db6823a-Norwood_01.webp" alt="One of the first families who called the neighborhood home">
+            <div class="carousel-caption">One of the first families who called the neighborhood home.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="Norwood photos/Then/15ea8f60-ab48-40dc-8cf4-ecef9945d19d-Norwood_02.webp" alt="Penick Chapel AME Zion Church">
+            <div class="carousel-caption">Penick Chapel AME Zion Church located in the neighborhood that dates back to 1890s.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="Norwood photos/Then/46c9add3-fc78-488b-8189-62ed189aeb10-Norwood_03.webp" alt="Historic building in Norwood">
+            <div class="carousel-caption">Rev. Sidney Penick, is photographed holding what looks to be a bible.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="Norwood photos/Then/oak-hill-768x587.png" alt="Oak Hill, Norwood">
+            <div class="carousel-caption">This image captures the Oak Hill Convalescent Tuberculosis Camp, established in Indianapolis around 1905 by the Women's Improvement Club (WIC). The camp provided open-air treatment for African Americans suffering from tuberculosis.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="Norwood photos/Then/Womens-Improvement-Club-House-768x649.png" alt="Women's Improvement Club House, Norwood">
+            <div class="carousel-caption">Women's Improvement Club House, Norwood</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="Norwood photos/Then/Cooking-Class-768x436.jpg" alt="One of the residents, Miss Farris class teaching a class in Norwood">
+            <div class="carousel-caption">One of the residents, Miss Farris class taching a class in Norwood</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="Norwood photos/Then/Former_Bad_Town_Now_An_Ideal_Spot_Norwood-scaled-e1732214778156.jpg" alt="Harris was a member of the Woman's Improvement Club.">
+            <div class="carousel-caption">Harris was a member of the Woman's Improvement Club, which concentrated on providing care for African Americans who suffered from tuberculosis.</div>
+        </div>
         <button class="carousel-btn left" onclick="moveCarousel('norwood-carousel-then', -1)">&#8592;</button>
         <button class="carousel-btn right" onclick="moveCarousel('norwood-carousel-then', 1)">&#8594;</button>
     </div>
     <h1>Now</h1>
     <div class="carousel-container" id="norwood-carousel-now">
-        <div class="carousel-slide" style="background-image: url('Norwood photos/Now/e74c7fbe-3bdd-450d-971f-b24939019ec8-_FINALS-5.webp');"></div>
-        <div class="carousel-slide" style="background-image: url('Norwood photos/Now/ea08f078-f529-4433-8955-baeccd653403-030122_EDIT_009.webp');"></div>
-        <div class="carousel-slide" style="background-image: url('Norwood photos/Now/5fd595cc-b7d4-48ca-8152-9c635d08e3da-030122_EDIT_020.webp');"></div>
-        <div class="carousel-slide" style="background-image: url('Norwood photos/Now/cd02b72c-9b5d-4971-8e48-d9009d53120f-030122_EDIT_030.webp');"></div>
-        <div class="carousel-slide active" style="background-image: url('Norwood photos/Now/1b9b96e9-3d28-4833-8a63-7b8a4a26b7bb-_FINALS-10.webp');"></div>
+        <div class="carousel-slide active">
+            <img src="Norwood photos/Now/e74c7fbe-3bdd-450d-971f-b24939019ec8-_FINALS-5.webp" alt="Modern view of Norwood neighborhood">
+            <div class="carousel-caption">Alesha Holder, 58 is photographed in front of the home she shares with her great grandfather Hobart Phillips on Wednesday, March 2, 2022, at their home in the Norwood neighborhood of Indianapolis.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="Norwood photos/Now/ea08f078-f529-4433-8955-baeccd653403-030122_EDIT_009.webp" alt="Current scene in Norwood, houses and trees">
+            <div class="carousel-caption">Norwood neighborhood resident Vanessa Edwards is photographed in the now empty lot where she once took piano lessons from the mother of fellow resident Flinora Frazier, the grand daughter of Penick Chapel AME Zion Church founder, Rev. Sidney Penick, on Tuesday, March 1, 2022, in Indianapolis.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="Norwood photos/Now/5fd595cc-b7d4-48ca-8152-9c635d08e3da-030122_EDIT_020.webp" alt="Street view in Norwood, 2020s">
+            <div class="carousel-caption">Norwood neighborhood residents, Vanessa Edwards, left, Flinora Frazier, right, the grand daughter of Penick Chapel AME Zion Church founder, Rev. Sidney Penick, are photographed in the church which was founded in 1889.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="Norwood photos/Now/cd02b72c-9b5d-4971-8e48-d9009d53120f-030122_EDIT_030.webp" alt="Norwood neighborhood, modern homes">
+            <div class="carousel-caption">Another photo of Norwood neighborhood residents, Flinora Frazier, left, the grand daughter of Penick Chapel AME Zion Church founder, Rev. Sidney Penick, and fellow resident Vanessa Edwards, are photographed at the church which was founded in 1889.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="Norwood photos/Now/1b9b96e9-3d28-4833-8a63-7b8a4a26b7bb-_FINALS-10.webp" alt="Norwood, new developments">
+            <div class="carousel-caption">A home belonging to Mr. Hobart Phillips, who turns 102 on March 6th, is photographed on Wednesday, March 2, 2022, in the Norwood neighborhood of Indianapolis.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="Norwood photos/Now/9290adcf-d6e6-4f52-a916-d2e976199f25-030122_EDIT_032.webp" alt="Community area in Norwood, present day">
+            <div class="carousel-caption">Another photo of Flinora Frazier, the grand daughter of Penick Chapel AME Zion Church founder, Rev. Sidney Penick in front of the church.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="Norwood photos/Now/dce5a27e-f080-4883-9320-883a03a5be6c-030122_EDIT_010.webp" alt="Modern Norwood, street and homes">
+            <div class="carousel-caption">Penick Chapel AME Zion Church Stone Monument</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="Norwood photos/Now/4c859e54-f954-47a0-9fb7-ec0734986ba6-030122_EDIT_006.webp" alt="Norwood, current neighborhood view">
+            <div class="carousel-caption">Flinora Frazier, the grand daughter of Penick Chapel AME Zion Church founder, Rev. Sidney Penick, is photographed inside the church which was founded in 1889.</div>
+        </div>
         <button class="carousel-btn left" onclick="moveCarousel('norwood-carousel-now', -1)">&#8592;</button>
         <button class="carousel-btn right" onclick="moveCarousel('norwood-carousel-now', 1)">&#8594;</button>
     </div>
@@ -176,39 +289,113 @@
     <h1>Fox Lake: Then & Now</h1>
     <h1>Then</h1>
     <div class="carousel-container" id="foxlake-carousel-then">
-        <div class="carousel-slide active" style="background-image: url('FoxLakephotos/Then/images.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/Pryors020-c1946-850x500.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/Pryors018-850x500.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/Bufflo-Sodiersl01-OPT.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/Bufflo-Soldier04-OPT.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/Bufflo_Soldiers.avif.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/308631728.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/lake-people-old-640x360.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/2742465801447710283.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/old-boat_opt-1.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/William-Watkins2.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/Tuskegee.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Then/foxlake land.png');"></div>
+        <div class="carousel-slide active">
+            <img src="FoxLakephotos/Then/ia04990011.jpg" alt="People with boats near pier at Fox Lake beach, Angola, Indiana.">
+            <div class="carousel-caption">People with boats near pier at Fox Lake beach, Angola, Indiana.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Then/Pryors020-c1946-850x500.jpg" alt="Pryor's Resort, Fox Lake">
+            <div class="carousel-caption">This image captures Pryor's Place in Angola, Indiana, a historic retreat and resort community for African Americans during the era of segregation.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Then/Pryors018-850x500.jpg" alt="A group of women enjoying their time at Fox Lake beach, Angola, Indiana.">
+            <div class="carousel-caption">Picture taken at Pryor's Country Place courtesy Indiana Landmarks.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Then/1.webp" alt="Picture taken at Pryor's Resort, Fox Lake">
+            <div class="carousel-caption">Picture taken at Pryor's Country Place courtesy Indiana Landmarks.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Then/2.webp" alt="Group of people at Pryor's Resort, Fox Lake">
+            <div class="carousel-caption">Picture taken at Pryor's Country Place courtesy Indiana Landmarks.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Then/3.webp" alt="Inside the Fox Lake clubhouse in 1950">
+            <div class="carousel-caption">Inside the Fox Lake clubhouse in 1950. Courtesy: the Wilson family.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Then/4.webp" alt="Fox lake resident, Albert Pryor">
+            <div class="carousel-caption">Fox lake resident, Albert Pryor(in the moddle), son of an original Buffalo Soldier. Courtesy: the Wilson family.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Then/5.webp" alt="People by the lake, old photo">
+            <div class="carousel-caption">Fox Lake summer youth camp in 2001. Courtesy: the Wilson family.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Then/6.webp" alt="Another historic view of Fox Lake">
+            <div class="carousel-caption">The old Fox Lake clubhouse. Courtesy: the Wilson family.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Then/7.webp" alt="Two women outside of the Mar-fran Motel in 1960">
+            <div class="carousel-caption">Two women outside of the Mar-fran Motel in 1960. Courtesy: the Wilson family.</div>
+        </div>
         <button class="carousel-btn left" onclick="moveCarousel('foxlake-carousel-then', -1)">&#8592;</button>
         <button class="carousel-btn right" onclick="moveCarousel('foxlake-carousel-then', 1)">&#8594;</button>
     </div>
+
+
     <h1>Now</h1>
     <div class="carousel-container" id="foxlake-carousel-now">
-        <div class="carousel-slide active" style="background-image: url('FoxLakephotos/Now/Fox_Lake_Resort,_760_Lane_130_(NRHP),_Angola,_IN.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Now/Fox-Lake-marker-dedication-credit-Andy-St.-John-hero.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Now/THompson-Lodge-June-2024c-edit.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Now/Juneteenth-Scan-a-thon-with-Indiana-Album-b.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Now/Juneteenth-Scan-a-thon-with-Indiana-Album-c.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Now/Juneteenth-2021-and-Sojourner-dedication.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Now/Fox-Lake-by-Carol-Karst-Wasson-850x500.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Now/Reynolds-Home-Fox-Lake-by-Carol-Karst-Wasson-850x500.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Now/4BIZEDYI6NAVNKYKUWWWYQLMPI.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Now/SJ-statue-1_opt_1368-225x300.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Now/Sojourner_interview_4947-OPT.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Now/SJ-statue-Arrator_4970-OPT.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Now/Sojourner-Truth_wagon_4944-1-300x200.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Now/Sojourner-Truth-Artist-_4942.avif');"></div>
-        <div class="carousel-slide" style="background-image: url('FoxLakephotos/Now/cda03a_40df68c9bf9e44c1a52c54f8654a0b03f000.avif');"></div>
+        <div class="carousel-slide active">
+            <img src="FoxLakephotos/Now/Fox_Lake_Resort,_760_Lane_130_(NRHP),_Angola,_IN.jpg" alt="Fox Lake Resort, present day">
+            <div class="carousel-caption">Fox Lake Resort, August 2013</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Now/Fox-Lake-marker-dedication-credit-Andy-St.-John-hero.jpg" alt="Fox Lake marker dedication">
+            <div class="carousel-caption">Fox Lake Preservation Foundation won a Servaas Award for its work to preserve and raise awareness of the historic African American resort community near Angola, including installing a historical marker sharing the community’s history. Photo: Andy St. John</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Now/THompson-Lodge-June-2024c-edit.jpg" alt="Thompson Lodge, Fox Lake">
+            <div class="carousel-caption">Fox Lake Preservation Foundation won a Servaas Award for its work to preserve and raise awareness of the historic African American resort community near Angola, including efforts to rehabilitate Thompson Lodge. Photo by Carol Karst-Wasson</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Now/Juneteenth-Scan-a-thon-with-Indiana-Album-b.jpg" alt="Juneteenth celebration at Fox Lake">
+            <div class="carousel-caption">To help preserve and share historic images of the lake, Fox Lake Preservation Foundation partnered with The Indiana Album to sponsor a Juneteenth scan-a-thon, inviting people to bring photographs stored in family albums and attics to be digitally scanned. Photo by Teresa Vanstratt</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Now/Juneteenth-Scan-a-thon-with-Indiana-Album-c.jpg" alt="Another view of Juneteenth celebration">
+            <div class="carousel-caption">To help preserve and share historic images of the lake, Fox Lake Preservation Foundation partnered with The Indiana Album to sponsor a Juneteenth scan-a-thon, inviting people to bring photographs stored in family albums and attics to be digitally scanned. Photo by Teresa Vanstratt</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Now/Juneteenth-2021-and-Sojourner-dedication.jpg" alt="Sojourner Truth dedication, Fox Lake">
+            <div class="carousel-caption">Fox Lake Preservation Foundation won a Servaas Award for its work to preserve and raise awareness of the historic African American resort community near Angola. Photo by Teresa Vanstratt</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Now/Fox-Lake-by-Carol-Karst-Wasson-850x500.jpg" alt="Artistic view of Fox Lake">
+            <div class="carousel-caption">Fox Lake Preservation Foundation wants to protect the historic resort community's natural character and built heritage. (Photo: Carol Karst-Wasson)</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Now/Reynolds-Home-Fox-Lake-by-Carol-Karst-Wasson-850x500.jpg" alt="Reynolds Home, Fox Lake">
+            <div class="carousel-caption">Reynolds Home, Fox Lake Preservation Foundation wants to protect the historic resort community's natural character and built heritage, including its collection of historic lakeside cottages. (Photo: Carol Karst-Wasson)</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Now/4BIZEDYI6NAVNKYKUWWWYQLMPI.avif" alt="Historic view of Fox Lake">
+            <div class="carousel-caption">Lyndy Bazile Fox Lake Mural, It brings to life the area’s history.</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Now/SJ-statue-1_opt_1368-225x300.avif" alt="Sojourner Truth statue, Fox Lake">
+            <div class="carousel-caption">Weekend Celebration Of Sojourner Truth Statue Revealing In Downtown Angola 2021 pt 1</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Now/Sojourner_interview_4947-OPT.avif" alt="Sojourner Truth interview, Fox Lake">
+            <div class="carousel-caption">Weekend Celebration Of Sojourner Truth Statue Revealing In Downtown Angola 2021 pt 2</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Now/SJ-statue-Arrator_4970-OPT.avif" alt="Sojourner Truth Arrator statue, Fox Lake">
+            <div class="carousel-caption">Weekend Celebration Of Sojourner Truth Statue Revealing In Downtown Angola 2021 pt 3</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Now/Sojourner-Truth_wagon_4944-1-300x200.avif" alt="Sojourner Truth wagon, Fox Lake">
+            <div class="carousel-caption">Weekend Celebration Of Sojourner Truth Statue Revealing In Downtown Angola 2021 pt 4</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Now/Sojourner-Truth-Artist-_4942.avif" alt="Artist depiction of Sojourner Truth">
+            <div class="carousel-caption">Weekend Celebration Of Sojourner Truth Statue Revealing In Downtown Angola 2021 pt 5</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="FoxLakephotos/Now/cda03a_40df68c9bf9e44c1a52c54f8654a0b03f000.avif" alt="Historical document about Sojourner Truth">
+            <div class="carousel-caption">A view of the Lake</div>
+        </div>
         <button class="carousel-btn left" onclick="moveCarousel('foxlake-carousel-now', -1)">&#8592;</button>
         <button class="carousel-btn right" onclick="moveCarousel('foxlake-carousel-now', 1)">&#8594;</button>
     </div>
@@ -246,6 +433,10 @@
             slides[activeIndex].classList.remove('active');
             activeIndex = (activeIndex + direction + slides.length) % slides.length;
             slides[activeIndex].classList.add('active');
+            // Reset zoom state when switching slides
+            if (typeof resetZoomById === 'function') {
+                resetZoomById(carouselId);
+            }
         }
 
         // Multi-step comparison logic
@@ -258,6 +449,235 @@
             slides[activeIndex].classList.add('active');
         }
     // ...existing code...
+
+    // Add fullscreen + zoom buttons to all carousels
+    document.addEventListener('DOMContentLoaded', function () {
+        const carousels = document.querySelectorAll('.carousel-container');
+        carousels.forEach((container) => {
+            // Ensure container can anchor absolutely positioned children
+            if (getComputedStyle(container).position === 'static') {
+                container.style.position = 'relative';
+            }
+
+            // --- Zoom state & helpers ---
+            const state = {
+                zoom: 1,
+                tx: 0,
+                ty: 0,
+                isDragging: false,
+                startX: 0,
+                startY: 0,
+                startTx: 0,
+                startTy: 0
+            };
+            container.__zoomState = state;
+
+            function applyZoom() {
+                const active = container.querySelector('.carousel-slide.active');
+                const all = container.querySelectorAll('.carousel-slide');
+                all.forEach(el => {
+                    if (el !== active) {
+                        el.style.transform = '';
+                    }
+                });
+                if (!active) return;
+                active.style.transformOrigin = '50% 50%';
+                active.style.transform = `translate(${state.tx}px, ${state.ty}px) scale(${state.zoom})`;
+            }
+
+            function clampPan() {
+                const w = container.clientWidth;
+                const h = container.clientHeight;
+                const maxX = (state.zoom - 1) * w / 2;
+                const maxY = (state.zoom - 1) * h / 2;
+                if (state.tx > maxX) state.tx = maxX;
+                if (state.tx < -maxX) state.tx = -maxX;
+                if (state.ty > maxY) state.ty = maxY;
+                if (state.ty < -maxY) state.ty = -maxY;
+            }
+
+            function setZoom(newZoom) {
+                const clamped = Math.min(3, Math.max(1, newZoom));
+                // Adjust pan to remain valid for new zoom
+                state.zoom = clamped;
+                clampPan();
+                applyZoom();
+            }
+
+            function resetZoom() {
+                state.zoom = 1;
+                state.tx = 0;
+                state.ty = 0;
+                applyZoom();
+            }
+
+            // Expose reset for moveCarousel
+            if (!window.resetZoomById) {
+                window.resetZoomById = function (carouselId) {
+                    const el = document.getElementById(carouselId);
+                    if (!el || !el.__zoomState) return;
+                    el.__zoomState.zoom = 1;
+                    el.__zoomState.tx = 0;
+                    el.__zoomState.ty = 0;
+                    const active = el.querySelector('.carousel-slide.active');
+                    const all = el.querySelectorAll('.carousel-slide');
+                    all.forEach(s => s.style.transform = '');
+                    if (active) active.style.transform = '';
+                };
+            }
+
+            // Drag-to-pan when zoomed
+            container.addEventListener('pointerdown', (e) => {
+                // Ignore pointer events starting on UI controls
+                const t = e.target;
+                if (t && (t.closest('.carousel-zoom-controls') || t.closest('.carousel-fullscreen-btn') || t.closest('.carousel-btn'))) {
+                    return;
+                }
+                if (state.zoom <= 1) return;
+                state.isDragging = true;
+                state.startX = e.clientX;
+                state.startY = e.clientY;
+                state.startTx = state.tx;
+                state.startTy = state.ty;
+                container.setPointerCapture(e.pointerId);
+                container.style.cursor = 'grabbing';
+            });
+            container.addEventListener('pointermove', (e) => {
+                if (!state.isDragging) return;
+                const dx = e.clientX - state.startX;
+                const dy = e.clientY - state.startY;
+                state.tx = state.startTx + dx;
+                state.ty = state.startTy + dy;
+                clampPan();
+                applyZoom();
+            });
+            const endDrag = (e) => {
+                if (!state.isDragging) return;
+                state.isDragging = false;
+                try { container.releasePointerCapture(e.pointerId); } catch {}
+                container.style.cursor = '';
+            };
+            container.addEventListener('pointerup', endDrag);
+            container.addEventListener('pointercancel', endDrag);
+            window.addEventListener('resize', () => { clampPan(); applyZoom(); });
+
+            // Zoom controls UI
+            const zoomControls = document.createElement('div');
+            zoomControls.className = 'carousel-zoom-controls';
+            const zoomOutBtn = document.createElement('button');
+            zoomOutBtn.className = 'carousel-zoom-btn';
+            zoomOutBtn.type = 'button';
+            zoomOutBtn.title = 'Zoom out';
+            zoomOutBtn.setAttribute('aria-label', 'Zoom out');
+            zoomOutBtn.textContent = '−';
+            // Prevent container drag start from consuming interactions
+            zoomOutBtn.addEventListener('pointerdown', (e) => e.stopPropagation());
+            zoomOutBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                setZoom(state.zoom - 0.25);
+            });
+            const zoomInBtn = document.createElement('button');
+            zoomInBtn.className = 'carousel-zoom-btn';
+            zoomInBtn.type = 'button';
+            zoomInBtn.title = 'Zoom in';
+            zoomInBtn.setAttribute('aria-label', 'Zoom in');
+            zoomInBtn.textContent = '+';
+            zoomInBtn.addEventListener('pointerdown', (e) => e.stopPropagation());
+            zoomInBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                setZoom(state.zoom + 0.25);
+            });
+            zoomControls.appendChild(zoomOutBtn);
+            zoomControls.appendChild(zoomInBtn);
+            container.appendChild(zoomControls);
+
+            const btn = document.createElement('button');
+            btn.className = 'carousel-fullscreen-btn';
+            btn.type = 'button';
+            btn.title = 'Toggle fullscreen';
+            btn.setAttribute('aria-label', 'Toggle fullscreen');
+            btn.textContent = '⛶';
+            btn.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                if (document.fullscreenElement === container) {
+                    if (document.exitFullscreen) document.exitFullscreen();
+                } else {
+                    openFullscreen(container);
+                }
+            });
+            container.appendChild(btn);
+
+            // Update icon based on fullscreen state
+            document.addEventListener('fullscreenchange', function () {
+                if (document.fullscreenElement === container) {
+                    btn.textContent = '✕';
+                    btn.title = 'Exit fullscreen';
+                    // Reset zoom and show full image without cropping in fullscreen
+                    resetZoom();
+                    const activeSlide = container.querySelector('.carousel-slide.active');
+                    if (activeSlide) {
+                        activeSlide.style.backgroundSize = 'contain';
+                        activeSlide.style.backgroundRepeat = 'no-repeat';
+                        activeSlide.style.backgroundPosition = 'center center';
+                    }
+                    // Make the container fill the viewport
+                    container.style.height = '100vh';
+                } else {
+                    btn.textContent = '⛶';
+                    btn.title = 'Enter fullscreen';
+                    // Revert to default cropped view
+                    const activeSlide = container.querySelector('.carousel-slide.active');
+                    if (activeSlide) {
+                        activeSlide.style.backgroundSize = 'cover';
+                        activeSlide.style.backgroundRepeat = '';
+                        activeSlide.style.backgroundPosition = 'center';
+                    }
+                    // Restore auto-adjusted height
+                    adjustCarouselHeight(container);
+                }
+            });
+        });
+    });
+
+    // --- Auto-adjust carousel height based on image orientation ---
+    function adjustCarouselHeight(container) {
+        const slide = container.querySelector('.carousel-slide.active');
+        if (!slide) return;
+        // Extract image URL from background-image style
+        const bg = slide.style.backgroundImage;
+        const match = bg.match(/url\(["']?(.*?)["']?\)/);
+        if (!match) return;
+        const url = match[1];
+        const img = new window.Image();
+        img.onload = function () {
+            let h = 600;
+            if (img.naturalHeight > img.naturalWidth) h = 800; // portrait
+            else if (img.naturalWidth > img.naturalHeight) h = 600; // landscape
+            else h = 700; // square
+            container.style.height = h + 'px';
+        };
+        img.src = url;
+    }
+    // Hook into carousel navigation and page load
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.carousel-container').forEach(container => {
+            adjustCarouselHeight(container);
+            // Listen for slide changes
+            container.addEventListener('transitionend', function (e) {
+                if (e.target.classList.contains('carousel-slide') && e.target.classList.contains('active')) {
+                    adjustCarouselHeight(container);
+                }
+            });
+        });
+    });
+    // Also call after moveCarousel
+    const origMoveCarousel = window.moveCarousel;
+    window.moveCarousel = function(carouselId, direction) {
+        origMoveCarousel(carouselId, direction);
+        const container = document.getElementById(carouselId);
+        if (container) adjustCarouselHeight(container);
+    };
 </script>
 
 </body>
